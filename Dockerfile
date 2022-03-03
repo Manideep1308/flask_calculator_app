@@ -1,11 +1,11 @@
-From python:3.8
+FROM python:3.7-alpine
+WORKDIR /app.py
+ENV FLASK_APP=app.py
+ENV FLASK_RUN_HOST=0.0.0.0
 
-WORKDIR /app
-
-COPY . .
-
+COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
-
+EXPOSE 5000
+COPY . .
 CMD ["python", "app.py"]
-
 
